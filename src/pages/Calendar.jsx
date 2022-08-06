@@ -9,7 +9,7 @@ import '../index.css'
 
 
 const Calendar = () => {
-  const weekDays = ['Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресение'];
+  const weekDays = ['Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье'];
   const [today,setToday] = useState(moment());
   const startDay = today.clone().startOf('month').startOf('week');
   const [calendar, setCalendar] = useState([]);
