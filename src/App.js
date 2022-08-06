@@ -7,8 +7,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path='/' element={< Home />}></Route>
-        <Route exact path='/calendar' element={< Calendar />}></Route>
+        <Route exact path='https://github.com/AndreyRise/Calendar-ReactJs.git' element={< Home />}></Route>
+        <Route exact path='https://github.com/AndreyRise/Calendar-ReactJs.git/calendar' element={< Calendar />}></Route>
       </Routes>
     </BrowserRouter>
   );
