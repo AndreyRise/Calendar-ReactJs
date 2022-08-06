@@ -5,7 +5,7 @@ import {BrowserRouter,Routes,Route,Link} from "react-router-dom"
 
 function App() {
   return (
-    <BrowserRouter basename="https://andreyrise.github.io/Calendar-ReactJs/">
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route exact path='/' element={< Home />}></Route>
         <Route exact path='/calendar' element={< Calendar />}></Route>
