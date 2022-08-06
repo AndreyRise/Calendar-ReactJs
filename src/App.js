@@ -5,10 +5,10 @@ import {BrowserRouter,Routes,Route,Link} from "react-router-dom"
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="https://andreyrise.github.io/Calendar-ReactJs/">
       <Routes>
-        <Route exact path='https://github.com/AndreyRise/Calendar-ReactJs.git' element={< Home />}></Route>
-        <Route exact path='https://github.com/AndreyRise/Calendar-ReactJs.git/calendar' element={< Calendar />}></Route>
+        <Route exact path='/' element={< Home />}></Route>
+        <Route exact path='/calendar' element={< Calendar />}></Route>
       </Routes>
     </BrowserRouter>
   );
