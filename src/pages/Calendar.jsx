@@ -32,6 +32,14 @@ const Calendar = () => {
       localStorage.setItem('eventsData', JSON.stringify(eventsData));
     }, 100);
     setEventsChanged(false);
+    calendar.map((dayItem)=>{
+      const el = document.getElementById(dayItem.format('DD-MM-YYYY'));
+      el.classList.remove('filledCell');
+    })
+    eventsData.map((eventItem) => {
+      const el = document.getElementById(eventItem.date);
+      el.classList.add('filledCell');
+    })
   }, [eventsChanged])
   
 
@@ -121,6 +129,7 @@ const Calendar = () => {
                     setEventsData(oldEventsData);
                     setPopup(false);
                     setEventsChanged(true);
+                    clearEventVars();
                   }
                   else alert('Удалять нечего!')
                 }} className='hover:cursor-pointer rounded px-[6px]'/>
@@ -159,7 +168,7 @@ const Calendar = () => {
         <div className='grid grid-rows-4 grid-cols-7 gap-[1px] bg-[#6B6B6B] border-[1px] border-[#6B6B6B]'>
           {
             calendar.map((dayItem, index) => (
-              <div className={'relative min-w-[142px] min-h-[120px] bg-white p-[8px] text-[14px] text-[#6B6B6B] hover:cursor-pointer hover:bg-[#F4F4F4] cellActive flex flex-col gap-y-[6px]'}
+              <div id={dayItem.format('DD-MM-YYYY')} className={'relative min-w-[142px] min-h-[120px] bg-white p-[8px] text-[14px] text-[#6B6B6B] hover:cursor-pointer cellActive flex flex-col gap-y-[6px]'}
                key={dayItem.format('DD-MM-YYYY')}
                onClick={()=>{
                 catchEventData(dayItem.format('DD-MM-YYYY'));
