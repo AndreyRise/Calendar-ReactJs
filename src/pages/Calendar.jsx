@@ -21,6 +21,17 @@ const Calendar = () => {
   const [eventDescription, setEventDescription] = useState('');
   const [eventsChanged, setEventsChanged] = useState(false);
 
+  function addFilledClass () {
+    calendar.map((dayItem)=>{
+      const el = document.getElementById(dayItem.format('DD-MM-YYYY'));
+      if (el !== null) el.classList.remove('filledCell');
+    })
+    eventsData.map((eventItem) => {
+      const el = document.getElementById(eventItem.date);
+      if (el !== null) el.classList.add('filledCell');
+    })
+  }
+
   useEffect( () => {
     const day = startDay.clone().subtract(1,'day');
     const daysArray = [...Array(42)].map(() => day.add(1,'day').clone());
@@ -31,16 +42,13 @@ const Calendar = () => {
     setTimeout(() => {
       localStorage.setItem('eventsData', JSON.stringify(eventsData));
     }, 100);
+    addFilledClass();
     setEventsChanged(false);
-    calendar.map((dayItem)=>{
-      const el = document.getElementById(dayItem.format('DD-MM-YYYY'));
-      el.classList.remove('filledCell');
-    })
-    eventsData.map((eventItem) => {
-      const el = document.getElementById(eventItem.date);
-      el.classList.add('filledCell');
-    })
   }, [eventsChanged])
+  
+  useEffect(() => {
+    addFilledClass();
+  }, [calendar])
   
 
   useEffect(() => {
@@ -55,7 +63,7 @@ const Calendar = () => {
     setToday(today.clone().subtract(1,'month'));
   };
   const todayHandler = () => {
-    setToday(moment())
+    setToday(moment());
   };
   const nextHandler = () => {
     setToday(today.clone().add(1,'month'));
